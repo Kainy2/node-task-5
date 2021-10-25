@@ -70,7 +70,7 @@ const putReq = (req, res) => {
             if (name && age && tel) {
                 // set the id to the old id and replace the old object with the new object from the request body
                 req.body.id = Number(id)
-                req.body.push(users[index])
+                users[index] = req.body
                 // set status and new response
                 status = 201
                 if (req.file) {
