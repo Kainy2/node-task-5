@@ -62,14 +62,14 @@ const putReq = (req, res) => {
     let status = 401
     let reply = { success: false, msg: 'User Not Found' }
     // store the id parameter in request in a var
-    const id = req.params.id
+    const id = Number(req.params.id)
     // while going through each item in array, if the params id is found in array and all inputs are received by server,...
     users.find((user, index, users) => {
         if (user.id == id) {
             const { name, age, tel } = req.body;
             if (name && age && tel) {
                 // set the id to the old id and replace the old object with the new object from the request body
-                req.body.id = Number(id)
+                req.body.id = id
                 users[index] = req.body
                 // set status and new response
                 status = 201
